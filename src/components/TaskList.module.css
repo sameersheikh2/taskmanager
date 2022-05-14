@@ -1,0 +1,10 @@
+ul {
+  list-style: decimal;
+  font-size: 25px;
+  color: white;
+  text-align: left;
+}
+
+ul li {
+  margin: 1rem;
+}

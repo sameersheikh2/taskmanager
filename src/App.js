@@ -1,25 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { useState } from "react";
+import Task from "./components/Task";
+import TaskList from "./components/TaskList";
 
-function App() {
+export default function App() {
+  const [taskLists, setTaskLists] = useState([]);
+  const [emptyTask, setEmptytask] = useState(false);
+
+  const TaskAddHandler = (task1, num1) => {
+    setTaskLists((prevTaskLists) => {
+      return [
+        ...prevTaskLists,
+        { title: task1, number: num1.toString(), id: Math.random().toString() },
+      ];
+    });
+    setEmptytask(false);
+    console.log(taskLists, "working");
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Task Manager</h1>
+      <Task onAddTask={TaskAddHandler} />
+      <section>
+        <TaskList users={taskLists} />
+        {!emptyTask && taskLists.length === 0 && <p>No Task Added.</p>}
+      </section>
     </div>
   );
 }
-
-export default App;
