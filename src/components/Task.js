@@ -31,7 +31,8 @@ const Task = (props) => {
             value={enteredName}
             onChange={nameChangeHandler}
             type="text"
-            style={{ margin: "2rem" }}
+            placeholder="Type here"
+            style={{ margin: "1rem" }}
           />
         </div>
         <div>
