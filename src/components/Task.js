@@ -1,10 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import classes from "./Task.module.css";
 
 const Task = (props) => {
   const [enteredName, setEnteredName] = useState("");
   const [num, setNum] = useState("");
   const [validForm, setValidForm] = useState(false);
+
+  useEffect(() => {
+    setValidForm(enteredName.trim().length > 0);
+  }, [enteredName]);
 
   const addTaskHandler = (e) => {
     e.preventDefault();
@@ -16,7 +20,6 @@ const Task = (props) => {
 
   const nameChangeHandler = (e) => {
     setEnteredName(e.target.value);
-    setValidForm(e.target.value.trim().length > 1);
   };
 
   const numChangeHandler = (e) => {
