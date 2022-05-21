@@ -19,7 +19,7 @@ export default function App() {
   };
 
   return (
-    <div className="App">
+    <div className="App text-3xl">
       <h1>Task Manager</h1>
       <Task onAddTask={TaskAddHandler} />
       <section>

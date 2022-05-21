@@ -5,11 +5,11 @@ const Task = (props) => {
   const [enteredName, setEnteredName] = useState("");
   const [num, setNum] = useState("");
   const [validForm, setValidForm] = useState(false);
-  const [errorMessage, setErrorMessager] = useState(false);
+  // const [errorMessage, setErrorMessager] = useState();
 
   useEffect(() => {
-    setValidForm(enteredName.trim().length > 0);
-    setValidForm(false);
+    // setValidForm(false);
+    setValidForm(enteredName.length > 0);
   }, [enteredName]);
 
   const addTaskHandler = (e) => {
@@ -43,12 +43,10 @@ const Task = (props) => {
         <div>
           <input value={num} onChange={numChangeHandler} type="date" />
         </div>
-        {!validForm && (
-          <button type="submit" className={classes.button}>
-            Add task
-          </button>
-        )}
-        {!validForm && <p>Enter valid value</p>}
+        <button type="submit" className={classes.button} disabled={!validForm}>
+          Add task
+        </button>
+        {/* {validForm && <p>Enter valid value</p>} */}
       </form>
     </React.Fragment>
   );
